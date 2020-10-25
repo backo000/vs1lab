@@ -22,9 +22,9 @@ header {
 .taglist{
   width:33%;
 
-
 }
-.tagmap { width: 66%;
+.tagmap {
+  width: 66%;
   height: 66%;
 }
 
