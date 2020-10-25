@@ -2,7 +2,49 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+header {
+  background-color: grey;
+}
+* {
+  box-sizing: border-box;
+}
+
+.tagging {
+  width: 25%;
+  float:left;
+}
+
+.discovery {
+  width: 75%;
+  float:left;
+}
+
+.taglist{
+  width:33%;
+
+
+}
+.tagmap { width: 66%;
+  height: 66%;
+}
+
+.tagging#tag-form fieldset{
+  display: flex;
+  flex-direction: column;
+}
+.taglist ul{
+  background: #00B7FF;
+  list-style-type: none;
+}
+div{
+  display:inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+}
+
 
 a {
   color: #00B7FF;
 }
+
+
