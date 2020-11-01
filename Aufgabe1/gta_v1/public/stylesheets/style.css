@@ -1,10 +1,6 @@
 body {
     padding: 50px;
     font: 16px "Lucida Sans", Helvetica, Arial, sans-serif;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
 }
 
 * {
@@ -16,6 +12,7 @@ header{
     color:#ffffff;
     padding: 15px;
 }
+
 footer {
     background-color: gray;
     padding: 15px;
@@ -24,41 +21,35 @@ a {
     color: #00B7FF;
 }
 
-
 main{
-    display: flex;
+    display:flex;
     flex-direction: row;
 }
-main::after{
-    content: "";
-    clear: both;
-    display: table;
-}
+
 .tagging{
     width: 25%;
     float:left;
     padding:15px;
 }
-.tagging input{
-    padding:8px;
-}
+
 .tagging input ,.tagging label{
     display: flex;
     margin:8px;
 }
+
 input[type="submit"]{
     font-size:16px;
 }
 
+.tagging input{
+    padding:8px;
+}
+
+/*Zweiter Teil fängt hier an */
+
 .discovery {
     width: 75%;
     padding: 15px;
-}
-
-.discovery::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 #filter-form input[type="search"], #filter-form input[type="submit"]{
@@ -66,20 +57,11 @@ input[type="submit"]{
     margin-right: 7px;
 }
 
-.tagmap{
-    display:flex;
-    flex-direction: column;
-    padding: 8px;
-}
-
 .taglist ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width:33%;
     float:left;
+    width:33%;
     list-style-type: none;
-    margin:0px;
+    margin:0;
     padding:0;
 }
 
@@ -91,38 +73,32 @@ input[type="submit"]{
     margin: 7px;
 }
 
-footer {
-    background-color: gray;
-    padding: 15px;
-}
-a {
-    color: #00B7FF;
+.tagmap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
 }
 
+#result-img{
+    margin-bottom: 8px;
+    max-width: 100%;
+}
 
-@media screen and (max-width: 800px) {
-    body{
-        padding:0px;
-    }
+@media screen and (max-width: 850px) {
     main {
         flex-direction: column;
-        padding: 0px;
     }
 
-    .tagging {
+     .discovery, .tagging {
+        display: flex;
         flex-direction: column;
+        width: 100%;
     }
+
     .taglist ul{
         width:100%;
     }
-
-    .discovery {
-        display: flex;
-        flex-direction: column;
-        flex:100%;
-
-    }
-
 
 }
 
