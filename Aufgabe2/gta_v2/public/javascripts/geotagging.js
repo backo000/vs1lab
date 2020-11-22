@@ -46,9 +46,9 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
      * Bei Fehler Callback 'onerror' mit Meldung.
      * Callback Funktionen als Parameter übergeben.
      */
-    var tryLocate = function(onsuccess, onerror) {
+    var tryLocate = function(onsuccess, e) {
         if (geoLocationApi) {
-            geoLocationApi.getCurrentPosition(onsuccess, function(error) {
+            geoLocationApi.getCurrentPosition( onsuccess, function(error) {
                 var msg;
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
@@ -64,10 +64,10 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
                         msg = "An unknown error occurred.";
                         break;
                 }
-                onerror(msg);
+                e(msg);
             });
         } else {
-            onerror("Geolocation is not supported by this browser.");
+            e("Geolocation is not supported by this browser.");
         }
     };
 
@@ -82,7 +82,7 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
     };
 
     // Hier Google Maps API Key eintragen
-    var apiKey = "YOUR_API_KEY_HERE";
+    var apiKey = "7QdRywkkbI5GJpt18RLg1oPAnpgtJsL8";
 
     /**
      * Funktion erzeugt eine URL, die auf die Karte verweist.
@@ -120,7 +120,18 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
         readme: "Dieses Objekt enthält 'öffentliche' Teile des Moduls.",
 
         updateLocation: function() {
-            // TODO Hier Inhalt der Funktion "update" ergänzen
+            tryLocate(
+            function (onsuccess) {
+                document.getElementById("latitude").value = getLatitude(onsuccess)
+              document.getElementById("longitude").value = getLongitude(onsuccess)
+                 document.getElementById("hiddenlongitude").value = getLatitude(onsuccess)
+                document.getElementById("hiddenlongitude").value = getLongitude(onsuccess)
+                document.getElementById("result-img").src = getLocationMapSrc(getLatitude(onsuccess),getLongitude(onsuccess),undefined,10)
+
+            },
+            function (fehlerbehandlung) {
+                alert(fehlerbehandlung);
+            })
         }
 
     }; // ... Ende öffentlicher Teil
@@ -132,6 +143,6 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
  * des Skripts.
  */
 $(function() {
-    alert("Please change the script 'geotagging.js'");
-    // TODO Hier den Aufruf für updateLocation einfügen
+    // alert("Please change the script 'geotagging.js'");
+  gtaLocator.updateLocation()
 });
